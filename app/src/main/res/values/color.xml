@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+    <color name="theme_default_primary">#3F51B5</color>
+    <color name="theme_default_primary_dark">#303F9F</color>
+    <color name="theme_window_background">#ffffff</color>
+    <color name="accent">#FF4081</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="text_icons">#FFFFFF</color>
+    <color name="ligth_primary_color">#C5CAE9</color>
+    </resources>
+
