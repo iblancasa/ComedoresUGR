@@ -21,6 +21,7 @@
         </include>
 
         <TextView
+            android:id="@+id/pru"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello World" />

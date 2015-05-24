@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -95,6 +96,14 @@ public class MainActivity extends ActionBarActivity {
 
         Drawer.setDrawerListener(mDrawerToggle);//Añadir listener
         mDrawerToggle.syncState();              //Sync State of drawer
+
+        TextView texto = (TextView) findViewById(R.id.pru);
+        ParserComedor parse = new ParserComedor();
+        parse.textView=texto;
+        parse.execute(new String[]{"http://comedoresugr.tcomunica.org/"});
+
+
+
 
     }
 
