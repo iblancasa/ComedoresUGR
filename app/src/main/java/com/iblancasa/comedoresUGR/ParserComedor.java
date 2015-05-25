@@ -14,38 +14,40 @@ import java.util.ArrayList;
 
 public class ParserComedor extends AsyncTask<String, Void, String> {
 
-    private ArrayList<Dia> semana = new ArrayList<>(7);;
-    TextView textView;
+    private ArrayList<Dia> semana = new ArrayList<>();
 
-
-
+    public ArrayList<Dia> getSemana(){
+        return semana;
+    }
 
 
     @Override
     protected String doInBackground(String... strings) {
 
-        StringBuffer buffer = new StringBuffer();
 
+        ArrayList<String> platosMenu;
 
         try {
-            Log.d("JSwa", "Connecting to ["+strings[0]+"]");
             Document doc  = Jsoup.connect(strings[0]).get();
-            Log.d("JSwa", "Connected to ["+strings[0]+"]");
-
 
             Elements metaElems = doc.select("#plato");
             for (Element metaElem : metaElems) {
 
-                String name = metaElem.attr("id");
-                buffer.append("name ["+name+"] \r\n");
+                platosMenu = new ArrayList<>();
+
+                String diaplato = metaElem.getElementById("diaplato").getElementById("fechaplato").html();
+                diaplato = diaplato.replace("<div class=\"numero\">","");
+                diaplato = diaplato.replace("</div>","");
 
                 Element menuDia = metaElem.getElementById("platos");
                 Elements platos = menuDia.children();
 
                 for(Element plato : platos){
-                    buffer.append("\r\rplato ["+plato.html()+"] \n");
+                    platosMenu.add(plato.html());
                 }
 
+                Dia d = new Dia(diaplato,platosMenu);
+                semana.add(d);
             }
 
         }
@@ -55,7 +57,7 @@ public class ParserComedor extends AsyncTask<String, Void, String> {
 
 
 
-        return buffer.toString();
+        return "";
     }
 
     @Override
@@ -66,8 +68,6 @@ public class ParserComedor extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        textView.setText(s);
-      //  respText.setText(s);
     }
 }
 
