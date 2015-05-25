@@ -51,12 +51,20 @@ public class MainActivity extends ActionBarActivity {
     ActionBarDrawerToggle mDrawerToggle;
 
 
+    com.iblancasa.comedoresUGR.Menu menu;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.activity_main);
+
+
+        menu = new com.iblancasa.comedoresUGR.Menu();
+
 
         //Añadido el toolbar
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
@@ -68,9 +76,7 @@ public class MainActivity extends ActionBarActivity {
 
         RecyclerView.setHasFixedSize(true);//Tamaño fijo
 
-        Adapter = new AdapterDrawer(TITLES,ICONS,NAME,EMAIL,PROFILE,this);//New adapter
 
-        RecyclerView.setAdapter(Adapter);//Set adapter
 
         LayoutManager = new LinearLayoutManager(this);//Layout Manager (linear)
 
@@ -94,14 +100,17 @@ public class MainActivity extends ActionBarActivity {
             }
         };
 
+
+
+
         Drawer.setDrawerListener(mDrawerToggle);//Añadir listener
+
+        Adapter = new AdapterDrawer(TITLES,ICONS,NAME,EMAIL,PROFILE,this,Drawer);//New adapter
+
+        RecyclerView.setAdapter(Adapter);//Set adapter
+
+
         mDrawerToggle.syncState();              //Sync State of drawer
-
-        TextView texto = (TextView) findViewById(R.id.pru);
-        ParserComedor parse = new ParserComedor();
-        parse.textView=texto;
-        parse.execute(new String[]{"http://comedoresugr.tcomunica.org/"});
-
 
 
 
