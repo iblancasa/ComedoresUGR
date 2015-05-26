@@ -119,6 +119,8 @@ public class ParserComedor extends AsyncTask<String, Void, String> {
         }
         else{
             pl1.setText("Algo falló (compruebe la conexión a Internet)");
+            pl2.setText("");
+            pl3.setText("");
         }
 
     }
