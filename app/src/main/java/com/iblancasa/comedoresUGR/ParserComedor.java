@@ -13,6 +13,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -66,15 +68,21 @@ public class ParserComedor extends AsyncTask<String, Void, String> {
 
                     platosMenu = new ArrayList<>();
 
-                    String diaplato = metaElem.getElementById("diaplato").getElementById("fechaplato").html();
-                    diaplato = diaplato.replace("<div class=\"numero\">", "");
-                    diaplato = diaplato.replace("</div>", "");
+                    Charset utf8charset = Charset.forName("UTF-8");
+                    Charset iso88591charset = Charset.forName("ISO-8859-1");
+
+                    String diaplato  = metaElem.getElementById("diaplato").getElementById("fechaplato").text();
+
+
+                    diaplato = diaplato.replaceAll("\\<.*?>","");
+
+
 
                     Element menuDia = metaElem.getElementById("platos");
                     Elements platos = menuDia.children();
 
                     for (Element plato : platos) {
-                        platosMenu.add(plato.html());
+                        platosMenu.add(plato.html().replaceAll("\\<.*?>"," "));
                     }
 
                     Dia d = new Dia(diaplato, platosMenu);
@@ -156,7 +164,6 @@ public class ParserComedor extends AsyncTask<String, Void, String> {
             }
 
             for (int i = 0; i < semana.size(); i++) {
-
                 if (semana.get(i).getDia().contains(dia)) {
                     return semana.get(i);
                 }

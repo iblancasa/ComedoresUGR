@@ -21,64 +21,75 @@
             layout="@layout/tool_bar">
         </include>
 
-        <android.support.v7.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-
-        </android.support.v7.widget.CardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.59">
 
             <ImageView
                 android:layout_width="207dp"
                 android:layout_height="207dp"
                 android:id="@+id/imagen"
+                android:src="@drawable/logo"
                 android:layout_gravity="center_horizontal"
-                android:translationZ="10dp" />
+                android:translationZ="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                android:elevation="4dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Hoy para comer..."
-                android:id="@+id/hoyparacomer"
-                android:layout_gravity="center_horizontal"
-                android:textAllCaps="true"
-                style="@style/Base.TextAppearance.AppCompat.Headline"
-                android:textColor="@color/primary_text" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/platoHoy"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/primary_text" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textView"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/primary_text" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textView2"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/primary_text" />
-        </LinearLayout>
 
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="0.59"
+                android:baselineAligned="true"
+                android:layout_marginBottom="25dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Hoy para comer..."
+                    android:id="@+id/hoyparacomer"
+                    android:layout_gravity="center_horizontal"
+                    android:textAllCaps="true"
+                    android:layout_marginTop="18dp"
+                    style="@style/Base.TextAppearance.AppCompat.Headline"
+                    android:textColor="@color/primary_text" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/primerPlato"
+                    android:textColor="@color/primary_text" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/segundoPlato"
+                    android:textColor="@color/primary_text" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/tercerPlato"
+                    android:textColor="@color/primary_text" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 

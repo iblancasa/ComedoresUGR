@@ -13,10 +13,13 @@ public class Menu {
     public Menu(TextView p1, TextView p2, TextView p3){
         parse = new ParserComedor(p1,p2,p3);
         parse.execute(new String[]{"http://comedoresugr.tcomunica.org/"});
+        platos=parse.getSemana();
     }
 
+
+
     public boolean finished(){
-        return platos==null;
+        return platos!=null;
     }
 
 

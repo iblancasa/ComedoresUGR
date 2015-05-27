@@ -1,5 +1,7 @@
 package com.iblancasa.comedoresUGR;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -54,16 +56,35 @@ public class MainActivity extends ActionBarActivity {
     com.iblancasa.comedoresUGR.Menu menu;
 
 
+    // RecyclerView menu
+    RecyclerView recyclerMenuSemana;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         setContentView(R.layout.activity_main);
 
+        TextView p1,p2,p3;
+        p1 = (TextView) findViewById(R.id.primerPlato);
+        p2 = (TextView) findViewById(R.id.segundoPlato);
+        p3 = (TextView) findViewById(R.id.tercerPlato);
 
-        menu = new com.iblancasa.comedoresUGR.Menu();
+
+        menu = new com.iblancasa.comedoresUGR.Menu(p1,p2,p3);
+
+        createLayout();
+
+
+
+    }
+
+
+
+    private void createLayout(){
+        final Context contexto = this;
 
 
         //Añadido el toolbar
@@ -83,6 +104,7 @@ public class MainActivity extends ActionBarActivity {
         RecyclerView.setLayoutManager(LayoutManager);//Añadiendo el layout manager
 
 
+
         Drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
 
         mDrawerToggle = new ActionBarDrawerToggle(this,Drawer,toolbar,0,0){
@@ -90,13 +112,29 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                //Código a ejecutar
+
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
-                //Código a ejecutar
+
+
+                setContentView(R.layout.activity_semana);
+                createLayout();
+
+
+               recyclerMenuSemana = (RecyclerView) findViewById(R.id.recycler_plato);
+                recyclerMenuSemana.setHasFixedSize(true);
+                final LinearLayoutManager mLayoutManager = new LinearLayoutManager(contexto);
+                recyclerMenuSemana.setLayoutManager(mLayoutManager);
+
+                final RecyclerView.ItemDecoration itemDecoration = new Divider(contexto);
+                recyclerMenuSemana.addItemDecoration(itemDecoration);
+
+                final Adapter recyclerAdapterMenu = new Adapter(menu.parse.getSemana(),contexto);
+                recyclerMenuSemana.setAdapter(recyclerAdapterMenu);
+
             }
         };
 
@@ -111,9 +149,6 @@ public class MainActivity extends ActionBarActivity {
 
 
         mDrawerToggle.syncState();              //Sync State of drawer
-
-
-
     }
 
 
