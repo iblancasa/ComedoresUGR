@@ -75,6 +75,7 @@ public class ParserComedor extends AsyncTask<String, Void, String> {
 
 
                     diaplato = diaplato.replaceAll("\\<.*?>","");
+                    diaplato = diaplato.replaceAll(" +", " ");
 
 
 
@@ -82,7 +83,7 @@ public class ParserComedor extends AsyncTask<String, Void, String> {
                     Elements platos = menuDia.children();
 
                     for (Element plato : platos) {
-                        platosMenu.add(plato.html().replaceAll("\\<.*?>"," "));
+                        platosMenu.add(plato.html().replaceAll("\\<.*?>","").replaceAll(" +", " "));
                     }
 
                     Dia d = new Dia(diaplato, platosMenu);
