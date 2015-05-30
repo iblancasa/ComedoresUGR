@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?selectableItemBackground"
+    card_view:cardCornerRadius="4dp"
+    android:clickable="true"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardElevation="4dp"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:src="@drawable/ic_action" />
+
+            <TextView
+                android:id="@+id/diaSemana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-light"
+                android:text="DÍA DE LA SEMANA"
+                />
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/primerPlatoDia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Plato 1"
+            />
+        <TextView
+            android:id="@+id/segundoPlatoDia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Plato 2"
+            />
+        <TextView
+            android:id="@+id/tercerPlatoDia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Plato 3"
+            />
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
