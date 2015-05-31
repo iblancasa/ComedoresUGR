@@ -2,6 +2,7 @@ package com.iblancasa.comedoresUGR;
 
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -49,6 +51,30 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         viewHolder.segundoPlato.setText(comidas.get(1));
         viewHolder.tercerPlato.setText(comidas.get(2));
 
+        int d;
+
+        switch (position){
+            case 0:
+                d = R.drawable.lunes;
+                break;
+            case 1:
+                d = R.drawable.martes;
+                break;
+            case 2:
+                d = R.drawable.miercoles;
+                break;
+            case 3:
+                d = R.drawable.jueves;
+                break;
+            case 4:
+                d = R.drawable.viernes;
+                break;
+            default:
+                d = R.drawable.sabado;
+                break;
+        }
+
+        viewHolder.icon.setImageResource(d);
 
         viewHolder.itemView.setTag(rowData);
     }
@@ -68,6 +94,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         private final TextView primerPlato;
         private final TextView segundoPlato;
         private final TextView tercerPlato;
+        private final ImageView icon;
 
 
         public ViewHolder(View itemView) {
@@ -77,6 +104,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             primerPlato = (TextView) itemView.findViewById(R.id.primerPlatoDia);
             segundoPlato = (TextView) itemView.findViewById(R.id.segundoPlatoDia);
             tercerPlato = (TextView) itemView.findViewById(R.id.tercerPlatoDia);
+            icon = (ImageView) itemView.findViewById(R.id.iconoPlato);
 
         }
     }

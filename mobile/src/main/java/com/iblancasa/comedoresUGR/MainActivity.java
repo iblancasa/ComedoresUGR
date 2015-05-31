@@ -18,10 +18,10 @@ import android.widget.TextView;
 public class MainActivity extends ActionBarActivity {
 
     //Títulos para el Drawer
-    String TITLES[] = {"Inicio","Soporte","Ver otra","Opción","Similares"};
+    String TITLES[] = {"Inicio","Menú semanal"};
 
     //Iconos asociados
-    int ICONS[] = {R.drawable.ic_1,R.drawable.ic_2,R.drawable.ic_3,R.drawable.ic_4,R.drawable.ic_5};
+    int ICONS[] = {R.drawable.inicio,R.drawable.semana};
 
 
     //Nombre a mostrar

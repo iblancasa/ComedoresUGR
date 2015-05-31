@@ -46,6 +46,7 @@ public class AdapterDrawer extends RecyclerView.Adapter<AdapterDrawer.ViewHolder
         DrawerLayout drawerL;
 
 
+
         public ViewHolder(View itemView,int ViewType,Context c, DrawerLayout d) {
             super(itemView);
             contxt = c;
