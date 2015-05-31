@@ -17,6 +17,9 @@ public class Menu {
     }
 
 
+    public Dia getHoy(){
+        return parse.getHoy();
+    }
 
     public boolean finished(){
         return platos!=null;

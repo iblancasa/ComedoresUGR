@@ -14,8 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends ActionBarActivity {
+
+    int mostrado=0;
 
     //Títulos para el Drawer
     String TITLES[] = {"Inicio","Menú semanal"};
@@ -76,9 +80,6 @@ public class MainActivity extends ActionBarActivity {
         menu = new com.iblancasa.comedoresUGR.Menu(p1,p2,p3);
 
         createLayout();
-
-
-
     }
 
 
@@ -119,21 +120,54 @@ public class MainActivity extends ActionBarActivity {
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
 
+                if(mostrado!=AdapterDrawer.pulsado) {
+                    switch (AdapterDrawer.pulsado) {
+                        case 2: {
+                            setContentView(R.layout.activity_semana);
+                            recyclerMenuSemana = (RecyclerView) findViewById(R.id.recycler_plato);
+                            recyclerMenuSemana.setHasFixedSize(true);
+                            final LinearLayoutManager mLayoutManager = new LinearLayoutManager(contexto);
+                            recyclerMenuSemana.setLayoutManager(mLayoutManager);
 
-                setContentView(R.layout.activity_semana);
-                createLayout();
+                            final RecyclerView.ItemDecoration itemDecoration = new Divider(contexto);
+                            recyclerMenuSemana.addItemDecoration(itemDecoration);
+
+                            final Adapter recyclerAdapterMenu = new Adapter(menu.parse.getSemana(), contexto);
+                            recyclerMenuSemana.setAdapter(recyclerAdapterMenu);
+                            break;
+                        }
+                        default:
+                            setContentView(R.layout.activity_main);
+
+                            TextView p1, p2, p3;
+                            p1 = (TextView) findViewById(R.id.primerPlato);
+                            p2 = (TextView) findViewById(R.id.segundoPlato);
+                            p3 = (TextView) findViewById(R.id.tercerPlato);
+
+                            Dia hoy = menu.getHoy();
+                            ArrayList<String> comida = hoy.getComida();
+
+                            if(comida.size()>1){
+                                p1.setText(comida.get(0));
+                                p2.setText(comida.get(1));
+                                p3.setText(comida.get(2));
+                            }
+                            else{
+                                p1.setText(comida.get(0));
+                                p2.setText("");
+                                p3.setText("");
+                            }
 
 
-               recyclerMenuSemana = (RecyclerView) findViewById(R.id.recycler_plato);
-                recyclerMenuSemana.setHasFixedSize(true);
-                final LinearLayoutManager mLayoutManager = new LinearLayoutManager(contexto);
-                recyclerMenuSemana.setLayoutManager(mLayoutManager);
+                            break;
 
-                final RecyclerView.ItemDecoration itemDecoration = new Divider(contexto);
-                recyclerMenuSemana.addItemDecoration(itemDecoration);
+                    }
 
-                final Adapter recyclerAdapterMenu = new Adapter(menu.parse.getSemana(),contexto);
-                recyclerMenuSemana.setAdapter(recyclerAdapterMenu);
+
+                    createLayout();
+                }
+
+
 
             }
         };

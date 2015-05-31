@@ -28,7 +28,7 @@ public class AdapterDrawer extends RecyclerView.Adapter<AdapterDrawer.ViewHolder
     private int profile;        //Image
     private String email;       //Email
     Context context;
-
+    static int pulsado=0;
 
     DrawerLayout drawerL;
 
@@ -61,8 +61,6 @@ public class AdapterDrawer extends RecyclerView.Adapter<AdapterDrawer.ViewHolder
                 Holderid = 1;
             }
             else{
-
-
                 Name = (TextView) itemView.findViewById(R.id.name);
                 email = (TextView) itemView.findViewById(R.id.email);
                 profile = (ImageView) itemView.findViewById(R.id.circleView);
@@ -77,7 +75,7 @@ public class AdapterDrawer extends RecyclerView.Adapter<AdapterDrawer.ViewHolder
         @Override
         public void onClick(View v) {
             drawerL.closeDrawers();
-            Toast.makeText(contxt,"The Item Clicked is: "+getPosition(),Toast.LENGTH_SHORT).show();
+            pulsado = getPosition();
         }
     }
 
