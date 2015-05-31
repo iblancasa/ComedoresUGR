@@ -1,4 +1,4 @@
-package com.iblancasa.comedoresugr;
+package com.iblancasa.comedoresUGR;
 
 
 import java.util.ArrayList;

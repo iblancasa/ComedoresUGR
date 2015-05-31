@@ -139,7 +139,7 @@ public class ParserComedor extends AsyncTask<String, Void, String> {
         if(semana.size()!=1) {
 
             Calendar rightNow = Calendar.getInstance();
-            String dia;
+            String dia=null;
 
             switch (rightNow.get(Calendar.DAY_OF_WEEK)) {
                 case Calendar.MONDAY:
@@ -160,8 +160,11 @@ public class ParserComedor extends AsyncTask<String, Void, String> {
                 case Calendar.SATURDAY:
                     dia = "Sábado";
                     break;
-                default:
-                    return null;
+                case Calendar.SUNDAY:
+                    ArrayList<String> cerrado = new ArrayList<String>();
+                    cerrado.add("Hoy el comedor está cerrado");
+                    Dia domingo = new Dia("Domingo", cerrado);
+                    return domingo;
             }
 
             for (int i = 0; i < semana.size(); i++) {
@@ -170,11 +173,8 @@ public class ParserComedor extends AsyncTask<String, Void, String> {
                 }
             }
         }
-        else if(semana.size()==1) {
-            return semana.get(0);
-        }
+        return semana.get(0);
 
-        return null;
 
     }
 

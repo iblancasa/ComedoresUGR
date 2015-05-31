@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.iblancasa.comedoresugr;
+package com.iblancasa.comedoresUGR;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -25,7 +25,7 @@ import android.view.WindowInsets;
 
 public class MainActivity extends Activity {
 
-    com.iblancasa.comedoresugr.Menu menu;
+    com.iblancasa.comedoresUGR.Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        menu = new com.iblancasa.comedoresugr.Menu(this,pager,getFragmentManager());
+        menu = new com.iblancasa.comedoresUGR.Menu(this,pager,getFragmentManager());
 
     }
 }

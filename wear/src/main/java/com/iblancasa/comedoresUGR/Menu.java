@@ -1,4 +1,4 @@
-package com.iblancasa.comedoresugr;
+package com.iblancasa.comedoresUGR;
 
 import android.app.FragmentManager;
 import android.content.Context;
@@ -11,7 +11,7 @@ public class Menu {
 
     public Menu(Context ctx, GridViewPager grid, FragmentManager fm){
         parse = new ParserComedor(ctx,grid,fm);
-        parse.execute(new String[]{"http://comedoresugr.tcomunica.org/"});
+        parse.execute(new String[]{"http://comedoresUGR.tcomunica.org/"});
        
     }
 

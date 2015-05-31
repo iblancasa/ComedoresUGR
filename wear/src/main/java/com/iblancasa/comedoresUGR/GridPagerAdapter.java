@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.iblancasa.comedoresugr;
+package com.iblancasa.comedoresUGR;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -26,11 +26,9 @@ import android.view.Gravity;
 
 import java.util.ArrayList;
 
-/**
- * Constructs fragments as requested by the GridViewPager. For each row a
- * different background is provided.
- */
-public class SampleGridPagerAdapter extends FragmentGridPagerAdapter {
+
+
+public class GridPagerAdapter extends FragmentGridPagerAdapter {
 
     private final Context mContext;
     private ArrayList<Page> pages;
@@ -39,7 +37,7 @@ public class SampleGridPagerAdapter extends FragmentGridPagerAdapter {
         String titleRes;
         String textRes;
         int iconRes;
-        int cardGravity = Gravity.BOTTOM;
+        int cardGravity = Gravity.CENTER_VERTICAL ;
         boolean expansionEnabled = true;
         float expansionFactor = 1.0f;
         int expansionDirection = CardFragment.EXPAND_DOWN;
@@ -55,7 +53,7 @@ public class SampleGridPagerAdapter extends FragmentGridPagerAdapter {
     }
 
 
-    public SampleGridPagerAdapter(Context ctx, FragmentManager fm, ArrayList<String> platos) {
+    public GridPagerAdapter(Context ctx, FragmentManager fm, ArrayList<String> platos, String dia) {
         super(fm);
         mContext = ctx;
 
@@ -70,10 +68,14 @@ public class SampleGridPagerAdapter extends FragmentGridPagerAdapter {
         pages.add(new Page("Tercer plato", platos.get(0), R.drawable.bugdroid,
                 Gravity.CENTER_VERTICAL));
 	}
-	else{
-        pages.add( new Page("ERROR","Algo salió mal" , R.drawable.bugdroid,
+	else if(dia=="Domingo"){
+        pages.add( new Page("Domingo","El comedor está cerrado" , R.drawable.bugdroid,
                 Gravity.CENTER_VERTICAL));
 	}
+    else{
+        pages.add( new Page("ERROR","Algo salió mal" , R.drawable.bugdroid,
+                Gravity.CENTER_VERTICAL));
+    }
 
 
     }
