@@ -18,6 +18,10 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+
+/**
+ * Descarga la página del comedor, la parsea y obtiene los platos de la semana actual
+ * */
 public class ParserComedor extends AsyncTask<String, Void, String> {
 
     private ArrayList<Dia> semana = new ArrayList<>();

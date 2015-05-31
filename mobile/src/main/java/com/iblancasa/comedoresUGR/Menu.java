@@ -5,7 +5,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-
+/**
+ * Interfaz entre el parseador y el resto de actividades
+ * */
 public class Menu {
     ParserComedor parse;
     ArrayList<Dia> platos;
