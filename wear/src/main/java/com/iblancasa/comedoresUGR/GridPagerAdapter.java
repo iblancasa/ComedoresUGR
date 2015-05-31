@@ -1,18 +1,4 @@
-/*
- * Copyright (C) 2014 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 package com.iblancasa.comedoresUGR;
 
 import android.app.Fragment;
@@ -60,20 +46,20 @@ public class GridPagerAdapter extends FragmentGridPagerAdapter {
         pages = new ArrayList<Page>();
 
 	if(platos.size()>1){
-        pages.add( new Page("Primer plato", platos.get(0), R.drawable.bugdroid,
+        pages.add( new Page("Primer plato", platos.get(0), R.mipmap.ic_launcher,
                 Gravity.CENTER_VERTICAL));
-        pages.add(new Page("Segundo plato", platos.get(0), R.drawable.bugdroid,
+        pages.add(new Page("Segundo plato", platos.get(0), R.mipmap.ic_launcher,
                 Gravity.CENTER_VERTICAL));
 
-        pages.add(new Page("Tercer plato", platos.get(0), R.drawable.bugdroid,
+        pages.add(new Page("Tercer plato", platos.get(0), R.mipmap.ic_launcher,
                 Gravity.CENTER_VERTICAL));
 	}
 	else if(dia=="Domingo"){
-        pages.add( new Page("Domingo","El comedor está cerrado" , R.drawable.bugdroid,
+        pages.add( new Page("Domingo","El comedor está cerrado" ,R.mipmap.ic_launcher,
                 Gravity.CENTER_VERTICAL));
 	}
     else{
-        pages.add( new Page("ERROR","Algo salió mal" , R.drawable.bugdroid,
+        pages.add( new Page("ERROR","Algo salió mal" ,R.mipmap.ic_launcher,
                 Gravity.CENTER_VERTICAL));
     }
 
@@ -81,11 +67,7 @@ public class GridPagerAdapter extends FragmentGridPagerAdapter {
     }
 
     static final int[] BG_IMAGES = new int[] {
-            R.drawable.debug_background_1,
-            R.drawable.debug_background_2,
-            R.drawable.debug_background_3,
-            R.drawable.debug_background_4,
-            R.drawable.debug_background_5
+            R.drawable.back
     };
 
 
@@ -98,7 +80,8 @@ public class GridPagerAdapter extends FragmentGridPagerAdapter {
         String title = page.titleRes;
         String text = page.textRes;
         CardFragment fragment = CardFragment.create(title, text, page.iconRes);
-        // Advanced settings
+
+
         fragment.setCardGravity(page.cardGravity);
         fragment.setExpansionEnabled(page.expansionEnabled);
         fragment.setExpansionDirection(page.expansionDirection);
@@ -108,7 +91,7 @@ public class GridPagerAdapter extends FragmentGridPagerAdapter {
 
     @Override
     public Drawable getBackgroundForRow(int row) {
-        return  mContext.getResources().getDrawable(BG_IMAGES[row]);
+        return  mContext.getResources().getDrawable(BG_IMAGES[0]);
     }
 
     @Override

@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Comedores UGR</string>
-
+    <string name="error">Error</string>
+    <string name="algoFallo">Algo salió mal</string>
 
 </resources>
