@@ -56,13 +56,10 @@ public class MainActivity extends ActionBarActivity {
     //Action Bar Drawer Toggle
     ActionBarDrawerToggle mDrawerToggle;
 
-
     com.iblancasa.comedoresUGR.Menu menu;
-
 
     // RecyclerView menu
     RecyclerView recyclerMenuSemana;
-
 
 
     @Override
@@ -87,24 +84,17 @@ public class MainActivity extends ActionBarActivity {
     private void createLayout(){
         final Context contexto = this;
 
-
         //Añadido el toolbar
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-
         RecyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
 
-
         RecyclerView.setHasFixedSize(true);//Tamaño fijo
-
-
 
         LayoutManager = new LinearLayoutManager(this);//Layout Manager (linear)
 
         RecyclerView.setLayoutManager(LayoutManager);//Añadiendo el layout manager
-
-
 
         Drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
 
@@ -163,7 +153,6 @@ public class MainActivity extends ActionBarActivity {
 
                     }
 
-
                     createLayout();
                 }
 
@@ -172,17 +161,13 @@ public class MainActivity extends ActionBarActivity {
             }
         };
 
+        Drawer.setDrawerListener(mDrawerToggle);
 
+        Adapter = new AdapterDrawer(TITLES,ICONS,this,Drawer);
 
+        RecyclerView.setAdapter(Adapter);
 
-        Drawer.setDrawerListener(mDrawerToggle);//Añadir listener
-
-        Adapter = new AdapterDrawer(TITLES,ICONS,NAME,EMAIL,PROFILE,this,Drawer);//New adapter
-
-        RecyclerView.setAdapter(Adapter);//Set adapter
-
-
-        mDrawerToggle.syncState();              //Sync State of drawer
+        mDrawerToggle.syncState();
     }
 
 

@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 
 
-
+/**
+ * Adapter para el Drawer de la izquierda
+ * */
 public class AdapterDrawer extends RecyclerView.Adapter<AdapterDrawer.ViewHolder> {
 
     private static final int TYPE_HEADER = 0; //Conocer la vista
@@ -24,9 +26,7 @@ public class AdapterDrawer extends RecyclerView.Adapter<AdapterDrawer.ViewHolder
     private String mNavTitles[]; //Títulos
     private int mIcons[];      //Iconos
 
-    private String name;        //n
-    private int profile;        //Image
-    private String email;       //Email
+
     Context context;
     static int pulsado=0;
 
@@ -61,16 +61,10 @@ public class AdapterDrawer extends RecyclerView.Adapter<AdapterDrawer.ViewHolder
                 Holderid = 1;
             }
             else{
-                Name = (TextView) itemView.findViewById(R.id.name);
-                email = (TextView) itemView.findViewById(R.id.email);
-                profile = (ImageView) itemView.findViewById(R.id.circleView);
+
                 Holderid = 0;
             }
-
-
-
         }
-
 
         @Override
         public void onClick(View v) {
@@ -81,35 +75,29 @@ public class AdapterDrawer extends RecyclerView.Adapter<AdapterDrawer.ViewHolder
 
 
 
-    //Adapter with titles, icons...
-    AdapterDrawer(String Titles[],int Icons[],String Name,String Email, int Profile,Context passedContext, DrawerLayout d){
-
+    AdapterDrawer(String Titles[],int Icons[],Context passedContext, DrawerLayout d){
         mNavTitles = Titles;
         mIcons = Icons;
-        name = Name;
-        email = Email;
-        profile = Profile;
         this.context = passedContext;
         drawerL=d;
-
     }
 
 
 
-    //When the ViewHolder inflated
+
     @Override
     public AdapterDrawer.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         if (viewType == TYPE_ITEM) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row,parent,false); //Inflating the layout
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row,parent,false);
 
-            ViewHolder vhItem = new ViewHolder(v,viewType,context,drawerL); //Creating ViewHolder and passing the object of type view
+            ViewHolder vhItem = new ViewHolder(v,viewType,context,drawerL);
 
             return vhItem;
 
         } else if (viewType == TYPE_HEADER) {
 
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.header,parent,false); //Inflating the layout
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.header,parent,false);
 
             ViewHolder vhHeader = new ViewHolder(v,viewType,context,drawerL);
 
@@ -119,28 +107,23 @@ public class AdapterDrawer extends RecyclerView.Adapter<AdapterDrawer.ViewHolder
 
     }
 
-    //Show item in a row. It's necessary say position and type
+
     @Override
     public void onBindViewHolder(AdapterDrawer.ViewHolder holder, int position) {
-        if(holder.Holderid ==1) {//Nor Text and image?
-            holder.textView.setText(mNavTitles[position - 1]); // Setting the Text with the array of our Titles
-            holder.imageView.setImageResource(mIcons[position -1]);// Settimg the image with array of our icons
-        }
-        else{
-            holder.profile.setImageResource(profile);
-            holder.Name.setText(name);
-            holder.email.setText(email);
+        if(holder.Holderid ==1) {
+            holder.textView.setText(mNavTitles[position - 1]);
+            holder.imageView.setImageResource(mIcons[position -1]);
         }
     }
 
 
     @Override
     public int getItemCount() {
-        return mNavTitles.length+1; // Elements + header
+        return mNavTitles.length+1;
     }
 
 
-    // With the following method we check what type of view is being passed
+
     @Override
     public int getItemViewType(int position) {
         if (isPositionHeader(position))
